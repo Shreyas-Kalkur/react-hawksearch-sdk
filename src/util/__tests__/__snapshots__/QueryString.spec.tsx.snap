@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getSearchQueryString escapes commas 1`] = `"?keyword=this is my keyword&priceslider=123%2C456"`;
+
+exports[`getSearchQueryString turns arrays into query string 1`] = `"?color=black&brand=cool"`;
+
+exports[`getSearchQueryString turns arrays with multiple values into query string 1`] = `"?color=black&brand=cool,kinda-cool"`;
+
+exports[`getSearchQueryString turns arrays with multiple values into query string and handles keyword 1`] = `"?keyword=this is my keyword&color=black&brand=cool,kinda-cool"`;
+
+exports[`parseSearchQueryString handles keyword when it has multiple values 1`] = `
+Object {
+  "CustomUrl": undefined,
+  "FacetSelections": Object {},
+  "IgnoreSpellcheck": undefined,
+  "IndexName": undefined,
+  "Is100CoverageTurnedOn": undefined,
+  "Keyword": "this is my keyword,which should be a long string",
+  "MaxPerPage": undefined,
+  "PageId": undefined,
+  "PageNo": undefined,
+  "SearchWithin": undefined,
+  "SortBy": undefined,
+}
+`;
+
+exports[`parseSearchQueryString handles keyword when parsing 1`] = `
+Object {
+  "CustomUrl": undefined,
+  "FacetSelections": Object {
+    "brand": Array [
+      "cool",
+      "kinda-cool",
+    ],
+    "color": Array [
+      "black",
+    ],
+  },
+  "IgnoreSpellcheck": undefined,
+  "IndexName": undefined,
+  "Is100CoverageTurnedOn": undefined,
+  "Keyword": "this%20is%20my%20keyword",
+  "MaxPerPage": undefined,
+  "PageId": undefined,
+  "PageNo": undefined,
+  "SearchWithin": undefined,
+  "SortBy": undefined,
+}
+`;
+
+exports[`parseSearchQueryString handles query params with no values 1`] = `
+Object {
+  "CustomUrl": undefined,
+  "FacetSelections": Object {},
+  "IgnoreSpellcheck": undefined,
+  "IndexName": undefined,
+  "Is100CoverageTurnedOn": undefined,
+  "Keyword": "men",
+  "MaxPerPage": undefined,
+  "PageId": undefined,
+  "PageNo": undefined,
+  "SearchWithin": undefined,
+  "SortBy": undefined,
+}
+`;
+
+exports[`parseSearchQueryString parses facets into arrays 1`] = `
+Object {
+  "CustomUrl": undefined,
+  "FacetSelections": Object {
+    "brand": Array [
+      "cool",
+    ],
+    "color": Array [
+      "black",
+    ],
+  },
+  "IgnoreSpellcheck": undefined,
+  "IndexName": undefined,
+  "Is100CoverageTurnedOn": undefined,
+  "Keyword": undefined,
+  "MaxPerPage": undefined,
+  "PageId": undefined,
+  "PageNo": undefined,
+  "SearchWithin": undefined,
+  "SortBy": undefined,
+}
+`;
+
+exports[`parseSearchQueryString parses facets into arrays and handles question mark 1`] = `
+Object {
+  "CustomUrl": undefined,
+  "FacetSelections": Object {
+    "brand": Array [
+      "cool",
+    ],
+    "color": Array [
+      "black",
+    ],
+  },
+  "IgnoreSpellcheck": undefined,
+  "IndexName": undefined,
+  "Is100CoverageTurnedOn": undefined,
+  "Keyword": undefined,
+  "MaxPerPage": undefined,
+  "PageId": undefined,
+  "PageNo": undefined,
+  "SearchWithin": undefined,
+  "SortBy": undefined,
+}
+`;
+
+exports[`parseSearchQueryString parses multiple facet values into arrays 1`] = `
+Object {
+  "CustomUrl": undefined,
+  "FacetSelections": Object {
+    "brand": Array [
+      "cool",
+      "kinda-cool",
+    ],
+    "color": Array [
+      "black",
+    ],
+  },
+  "IgnoreSpellcheck": undefined,
+  "IndexName": undefined,
+  "Is100CoverageTurnedOn": undefined,
+  "Keyword": undefined,
+  "MaxPerPage": undefined,
+  "PageId": undefined,
+  "PageNo": undefined,
+  "SearchWithin": undefined,
+  "SortBy": undefined,
+}
+`;
+
+exports[`parseSearchQueryString parses search within 1`] = `
+Object {
+  "CustomUrl": undefined,
+  "FacetSelections": Object {
+    "brand": Array [
+      "cool",
+    ],
+    "color": Array [
+      "black",
+    ],
+  },
+  "IgnoreSpellcheck": undefined,
+  "IndexName": undefined,
+  "Is100CoverageTurnedOn": undefined,
+  "Keyword": undefined,
+  "MaxPerPage": undefined,
+  "PageId": undefined,
+  "PageNo": undefined,
+  "SearchWithin": "blah%20blah",
+  "SortBy": undefined,
+}
+`;

@@ -1,0 +1,20 @@
+{
+	"extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier", "tslint-react-hooks"],
+	"rules": {
+		"quotemark": [false, "single", "jsx-double"],
+		"indent": [false],
+		"object-literal-sort-keys": [false],
+		"ordered-imports": [false],
+		"jsx-no-multiline-js": [false],
+		"jsx-no-lambda": [false],
+		"interface-name": [false],
+		"jsx-boolean-value": [false],
+		"member-ordering": [false],
+		"no-console": [false],
+		"arrow-parens": [false],
+		"jsx-curly-spacing": [false],
+		"no-empty": [false],
+		"max-classes-per-file": [false, 1],
+		"react-hooks-nesting": "error"
+	}
+}

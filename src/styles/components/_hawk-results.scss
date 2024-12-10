@@ -10,6 +10,7 @@
     border-radius: 10px;
 	text-align: center;
 	transition: transform 0.2s;
+	margin: 2rem;
 
 	@include md {
 		max-width: 300px;
@@ -45,12 +46,15 @@
 	margin: 10px auto 0px auto;
 	text-align: center;
 	font-size: 1em;
+	padding: 1rem;
 }
 
 .hawk-results__listing {
 	display: flex;
 	flex-wrap: wrap;
 	padding: 0px;
+	margin: 1.25rem;
+	justify-content: center;
 }
 
 .hawk-results__top-tool-row {

@@ -8,6 +8,7 @@ export interface ResultItemProps {
 
 function ResultItem({ item }: ResultItemProps) {
 	const itemName = item.getDocumentValue('title');
+	const itemPrice = item.getDocumentValue('price');
 
 	return (
 		<div className="hawk-results__item">
@@ -16,6 +17,10 @@ function ResultItem({ item }: ResultItemProps) {
 			<div className="hawk-results__item-name">
 				<span>{itemName}</span>
 			</div>
+			<div className="hawk-results__item-price">
+				<span>{itemPrice}</span>
+			</div>
+
 		</div>
 	);
 }

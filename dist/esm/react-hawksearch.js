@@ -20986,13 +20986,16 @@ function ResultImage(_ref) {
 function ResultItem(_ref) {
   var item = _ref.item;
   var itemName = item.getDocumentValue('title');
+  var itemPrice = item.getDocumentValue('price');
   return /*#__PURE__*/React__default.createElement("div", {
     className: "hawk-results__item"
   }, /*#__PURE__*/React__default.createElement(ResultImage, {
     item: item
   }), /*#__PURE__*/React__default.createElement("div", {
     className: "hawk-results__item-name"
-  }, /*#__PURE__*/React__default.createElement("span", null, itemName)));
+  }, /*#__PURE__*/React__default.createElement("span", null, itemName)), /*#__PURE__*/React__default.createElement("div", {
+    className: "hawk-results__item-price"
+  }, /*#__PURE__*/React__default.createElement("span", null, itemPrice)));
 }
 
 function ResultListing(_ref) {

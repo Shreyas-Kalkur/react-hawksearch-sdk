@@ -5,6 +5,7 @@ import { useHawksearch } from 'components/StoreProvider';
 import SearchBoxBase from 'components/ui/SearchBox/SearchBoxBase';
 import { Product } from 'models/Autocomplete';
 import { CustomSuggestionListProps } from 'components/ui/AutoComplete/CustomSuggestionList';
+import CameraIcon from 'components/svg/CameraIcon';
 
 interface SearchBoxProps {
   SuggestionList?: React.ComponentType<CustomSuggestionListProps>;
@@ -96,7 +97,7 @@ function SearchBox({ SuggestionList }: SearchBoxProps) {
           setModalOpen(true);
         }}
       >
-        Image
+        <CameraIcon className='camera-icon'></CameraIcon>
       </button>
       {isModalOpen && (
         <UploadModal

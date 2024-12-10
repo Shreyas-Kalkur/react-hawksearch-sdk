@@ -30,6 +30,7 @@ const UploadModal = ({ onClose, onUpload }) => {
         <span className="close" onClick={onClose}>
           &times;
         </span>
+        <h1>Upload an image</h1>
         <div
           id="dropZone"
           className={`drop-zone ${dragging ? "drag-over" : ""}`}

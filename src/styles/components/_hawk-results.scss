@@ -5,12 +5,12 @@
 .hawk-results__item {
 	margin: 0 0 2em;
 	width: 100%;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	border: 1px solid #ddd;
-    border-radius: 10px;
-	text-align: center;
+	// box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	// border: 1px solid #ddd;
+    // border-radius: 10px;
+	// text-align: center;
 	transition: transform 0.2s;
-	margin: 2rem;
+	// margin: 2rem;
 
 	@include md {
 		max-width: 300px;
@@ -23,7 +23,7 @@
 }
 
 .hawk-results__item-image {
-	padding: 10px;
+	// padding: 10px;
 
 	img {
 		display: block;

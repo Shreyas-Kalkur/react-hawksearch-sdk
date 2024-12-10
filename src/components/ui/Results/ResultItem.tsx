@@ -18,7 +18,7 @@ function ResultItem({ item }: ResultItemProps) {
 				<span>{itemName}</span>
 			</div>
 			<div className="hawk-results__item-price">
-				<span>{itemPrice}</span>
+				<span>${{itemPrice}}</span>
 			</div>
 
 		</div>

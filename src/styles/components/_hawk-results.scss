@@ -5,6 +5,13 @@
 .hawk-results__item {
 	margin: 0 0 2em;
 	width: 100%;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border: 1px solid #ddd;
+    border-radius: 10px;
+	padding: 15px;
+    margin: 15px;
+	text-align: center;
+	transition: transform 0.2s;
 
 	@include md {
 		max-width: 300px;
@@ -24,7 +31,7 @@
 		margin: auto;
 		width: 100%;
 		height: 175px;
-		object-fit: contain;
+		border-radius: 5px;
 	}
 }
 
@@ -32,12 +39,14 @@
 	width: 75%;
 	margin: 10px auto 0px auto;
 	text-align: center;
+	font-size: 1.1rem;
 }
 
 .hawk-results__item-price{
 	width: 75%;
 	margin: 10px auto 0px auto;
 	text-align: center;
+	font-size: 1em;
 }
 
 .hawk-results__listing {

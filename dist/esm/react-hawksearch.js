@@ -20985,7 +20985,7 @@ function ResultImage(_ref) {
 
 function ResultItem(_ref) {
   var item = _ref.item;
-  var itemName = item.getDocumentValue('itemname');
+  var itemName = item.getDocumentValue('title');
   return /*#__PURE__*/React__default.createElement("div", {
     className: "hawk-results__item"
   }, /*#__PURE__*/React__default.createElement(ResultImage, {

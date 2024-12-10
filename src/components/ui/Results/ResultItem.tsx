@@ -7,7 +7,7 @@ export interface ResultItemProps {
 }
 
 function ResultItem({ item }: ResultItemProps) {
-	const itemName = item.getDocumentValue('itemname');
+	const itemName = item.getDocumentValue('title');
 
 	return (
 		<div className="hawk-results__item">

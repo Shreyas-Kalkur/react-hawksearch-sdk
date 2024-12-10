@@ -20995,9 +20995,7 @@ function ResultItem(_ref) {
     className: "hawk-results__item-name"
   }, /*#__PURE__*/React__default.createElement("span", null, itemName)), /*#__PURE__*/React__default.createElement("div", {
     className: "hawk-results__item-price"
-  }, /*#__PURE__*/React__default.createElement("span", null, "$", {
-    itemPrice: itemPrice
-  })));
+  }, /*#__PURE__*/React__default.createElement("span", null, "$", itemPrice)));
 }
 
 function ResultListing(_ref) {

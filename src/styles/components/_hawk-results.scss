@@ -5,8 +5,8 @@
 .hawk-results__item {
 	margin: 0;
 	width: calc(25% - 1rem);;
-	// box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	border: 1px solid #716b6b;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border: 1px solid #ccc;
     border-radius: 0.5rem;
 	// text-align: center;
 	transition: transform 0.2s;

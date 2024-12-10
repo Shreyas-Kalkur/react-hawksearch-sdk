@@ -20944,7 +20944,7 @@ function ResultImage(_ref) {
   }
 
   if (!imageTitle) {
-    imageTitle = itemTitleFieldName ? item.getDocumentValue(itemTitleFieldName) : item.getDocumentValue('itemname');
+    imageTitle = itemTitleFieldName ? item.getDocumentValue(itemTitleFieldName) : item.getDocumentValue('title');
   }
 
   var absoluteUrlTester = new RegExp('^https?://|^//', 'i');

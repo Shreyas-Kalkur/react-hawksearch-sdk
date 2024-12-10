@@ -34,7 +34,7 @@ function ResultImage({
 	}
 
 	if (!imageTitle) {
-		imageTitle = itemTitleFieldName ? item.getDocumentValue(itemTitleFieldName) : item.getDocumentValue('itemname');
+		imageTitle = itemTitleFieldName ? item.getDocumentValue(itemTitleFieldName) : item.getDocumentValue('title');
 	}
 
 	const absoluteUrlTester = new RegExp('^https?://|^//', 'i');

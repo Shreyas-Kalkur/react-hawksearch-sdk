@@ -88,18 +88,20 @@
   }
   
 
-	.hawk__searchBox__searchInput{
-		width: 90%;
-		height: 46px;
-		// padding: 4px 30px 4px 30px;
-		font-size: 0.933em;
-		background: none;
-		// border: 0;
-		// box-sizing: border-box;
-		color: white;
-		font-family: 'Montserrat', sans-serif;
-		font-weight: 500;
-	}
+	// .hawk__searchBox__searchInput{
+	// 	width: 90%;
+	// 	height: 46px;
+	// 	// padding: 4px 30px 4px 30px;
+	// 	flex-grow: 1;
+	// 	font-size: 0.933em;
+	// 	background: none;
+	// 	border: none;
+	// 	outline: none;
+	// 	// box-sizing: border-box;
+	// 	color: white;
+	// 	font-family: 'Montserrat', sans-serif;
+	// 	font-weight: 500;
+	// }
 	.toggle-button {
 		background: none;
 		border: none;
@@ -108,12 +110,14 @@
 		font-family: 'Montserrat', sans-serif;
 		margin-left: 10px;
 		cursor: pointer;
-	  }
+		display: flex;
+    	border-left: 2px solid #acafb2;
+    	height: 100%;
+		&:focus{
+			outline: none;
+		}
+	}
 	  
-	  .toggle-button:hover {
-		text-decoration: underline;
-	  }
-		
 		
 	.image-button{
 		color: white;

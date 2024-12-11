@@ -14,18 +14,15 @@ interface SearchBoxProps {
 function SearchBox({ SuggestionList }: SearchBoxProps) {
   const { store, actor } = useHawksearch();
   const [isModalOpen, setModalOpen] = useState(false);
-  const [searchMode, setSearchMode] = useState<'text' | 'image'>('text'); // Track current search mode
+  const [searchMode, setSearchMode] = useState<'keyword' | 'concept' | 'image'>('keyword');
 
-  function handleSubmit(event: React.KeyboardEvent<HTMLInputElement>, downshift: ControllerStateAndHelpers<Product>) {
-    if (searchMode !== 'text') {
-      setSearchMode('text'); // Switch to text mode
-    }
-
+  function handleSubmit(event: React.KeyboardEvent<HTMLInputElement>,/* downshift: ControllerStateAndHelpers<Product>*/) {
     const keyword = event.currentTarget.value.trim();
     if (event.key === 'Enter' && keyword.length) {
+      const requestType = searchMode === 'concept' ? 'ConceptSearch' : 'KeywordSearch';
       actor.setSearch(
         {
-          RequestType: 'KeywordSearch', // Set RequestType for text search
+          RequestType: requestType,
           Keyword: encodeURIComponent(keyword),
           IgnoreSpellcheck: false,
         },
@@ -35,31 +32,11 @@ function SearchBox({ SuggestionList }: SearchBoxProps) {
     }
   }
 
-  function handleViewAllMatches(inputValue: string) {
-    if (searchMode !== 'text') {
-      setSearchMode('text'); // Switch to text mode
-    }
-
-    actor.setSearch(
-      {
-        RequestType: 'KeywordSearch', // Set RequestType for text search
-        PageId: undefined,
-        CustomUrl: undefined,
-        Keyword: inputValue || '',
-      },
-      true,
-      true
-    );
-  }
-
   function handleImageSearch(base64Image: string) {
-    if (searchMode !== 'image') {
-      setSearchMode('image'); // Switch to image mode
-    }
-
+    setSearchMode('image');
     actor.setSearch(
       {
-        RequestType: 'ImageSearch', // Set RequestType for image search
+        RequestType: 'ImageSearch',
         ImageData: `data:image/png;base64,${base64Image}`,
       },
       true,
@@ -83,27 +60,42 @@ function SearchBox({ SuggestionList }: SearchBoxProps) {
 
   return (
     <div className="hawk__searchBox">
-      
-      <SearchBoxBase
-        onViewMatches={(downshift) => handleViewAllMatches(downshift.inputValue || '')}
-        initialValue={store && store.pendingSearch ? store.pendingSearch.Keyword : ''}
-        onSubmit={handleSubmit}
-        SuggestionList={SuggestionList}
-      />
-	  <button
-        onClick={() => {
-          resetSearchState(); // Clear previous search data
-          setSearchMode('image'); // Switch to image mode
-          setModalOpen(true);
-        }}
-      >
-        <CameraIcon className='camera-icon'></CameraIcon>
-      </button>
+      <div className="search-container">
+        <div className="search-input-wrapper">
+          <input
+            type="text"
+            className="search-input"
+            placeholder={searchMode === 'concept' ? 'Search by Concept' : 'Search by Keyword'}
+            onKeyDown={handleSubmit}
+            defaultValue={store && store.pendingSearch ? store.pendingSearch.Keyword : ''}
+          />
+          <button
+            className="toggle-button"
+            onClick={() => {
+              resetSearchState();
+              setSearchMode(searchMode === 'concept' ? 'keyword' : 'concept');
+            }}
+          >
+            or {searchMode === 'concept' ? 'Keyword' : 'Concepts'}
+          </button>
+        </div>
+        <button
+          className="image-button"
+          onClick={() => {
+            resetSearchState();
+            setSearchMode('image');
+            setModalOpen(true);
+          }}
+        >
+          <CameraIcon className="camera-icon" />
+        </button>
+      </div>
+
       {isModalOpen && (
         <UploadModal
           onClose={() => {
             setModalOpen(false);
-            setSearchMode('text'); // Reset to text mode on modal close
+            setSearchMode('keyword');
           }}
           onUpload={(base64String) => {
             console.log('Uploaded image data:', base64String);

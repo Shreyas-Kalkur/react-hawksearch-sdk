@@ -18456,51 +18456,30 @@ function SearchBox(_ref) {
       isModalOpen = _useState2[0],
       setModalOpen = _useState2[1];
 
-  var _useState3 = useState('text'),
+  var _useState3 = useState('keyword'),
       _useState4 = _slicedToArray$1(_useState3, 2),
       searchMode = _useState4[0],
-      setSearchMode = _useState4[1]; // Track current search mode
+      setSearchMode = _useState4[1];
 
-
-  function handleSubmit(event, downshift) {
-    if (searchMode !== 'text') {
-      setSearchMode('text'); // Switch to text mode
-    }
-
+  function handleSubmit(event)
+  /* downshift: ControllerStateAndHelpers<Product>*/
+  {
     var keyword = event.currentTarget.value.trim();
 
     if (event.key === 'Enter' && keyword.length) {
+      var requestType = searchMode === 'concept' ? 'ConceptSearch' : 'KeywordSearch';
       actor.setSearch({
-        RequestType: 'KeywordSearch',
-        // Set RequestType for text search
+        RequestType: requestType,
         Keyword: encodeURIComponent(keyword),
         IgnoreSpellcheck: false
       }, true, true);
     }
   }
 
-  function handleViewAllMatches(inputValue) {
-    if (searchMode !== 'text') {
-      setSearchMode('text'); // Switch to text mode
-    }
-
-    actor.setSearch({
-      RequestType: 'KeywordSearch',
-      // Set RequestType for text search
-      PageId: undefined,
-      CustomUrl: undefined,
-      Keyword: inputValue || ''
-    }, true, true);
-  }
-
   function handleImageSearch(base64Image) {
-    if (searchMode !== 'image') {
-      setSearchMode('image'); // Switch to image mode
-    }
-
+    setSearchMode('image');
     actor.setSearch({
       RequestType: 'ImageSearch',
-      // Set RequestType for image search
       ImageData: "data:image/png;base64,".concat(base64Image)
     }, true, true);
   }
@@ -18517,27 +18496,35 @@ function SearchBox(_ref) {
 
   return /*#__PURE__*/React__default.createElement("div", {
     className: "hawk__searchBox"
-  }, /*#__PURE__*/React__default.createElement(SearchBoxBase, {
-    onViewMatches: function onViewMatches(downshift) {
-      return handleViewAllMatches(downshift.inputValue || '');
-    },
-    initialValue: store && store.pendingSearch ? store.pendingSearch.Keyword : '',
-    onSubmit: handleSubmit,
-    SuggestionList: SuggestionList
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "search-container"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "search-input-wrapper"
+  }, /*#__PURE__*/React__default.createElement("input", {
+    type: "text",
+    className: "search-input",
+    placeholder: searchMode === 'concept' ? 'Search by Concept' : 'Search by Keyword',
+    onKeyDown: handleSubmit,
+    defaultValue: store && store.pendingSearch ? store.pendingSearch.Keyword : ''
   }), /*#__PURE__*/React__default.createElement("button", {
+    className: "toggle-button",
     onClick: function onClick() {
-      resetSearchState(); // Clear previous search data
-
-      setSearchMode('image'); // Switch to image mode
-
+      resetSearchState();
+      setSearchMode(searchMode === 'concept' ? 'keyword' : 'concept');
+    }
+  }, "or ", searchMode === 'concept' ? 'Keyword' : 'Concepts')), /*#__PURE__*/React__default.createElement("button", {
+    className: "image-button",
+    onClick: function onClick() {
+      resetSearchState();
+      setSearchMode('image');
       setModalOpen(true);
     }
   }, /*#__PURE__*/React__default.createElement(CameraIcon, {
     className: "camera-icon"
-  })), isModalOpen && /*#__PURE__*/React__default.createElement(UploadModal, {
+  }))), isModalOpen && /*#__PURE__*/React__default.createElement(UploadModal, {
     onClose: function onClose() {
       setModalOpen(false);
-      setSearchMode('text'); // Reset to text mode on modal close
+      setSearchMode('keyword');
     },
     onUpload: function onUpload(base64String) {
       console.log('Uploaded image data:', base64String);
